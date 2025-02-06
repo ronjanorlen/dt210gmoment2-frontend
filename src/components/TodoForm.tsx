@@ -2,9 +2,10 @@
 import { useState } from "react";
 import { todoInterface } from "../interfaces/TodoInterface"; // Importera todoInterface
 import * as Yup from "yup"; // Importera Yup
+import usePost from "../hooks/usePost"; // Importera usePost-hook 
 
 
-const TodoForm = () => {
+const TodoForm = ({ onTodoAdded }: { onTodoAdded: () => void }) => {
 
     // Interface för felmeddelanden 
     interface ErrorsData {
@@ -17,14 +18,17 @@ const TodoForm = () => {
     const [formData, setFormData] = useState<todoInterface>({ title: "", description: "", status: "Ej påbörjad" })
     const statusArr = ["Ej påbörjad", "Pågående", "Avklarad"];
 
+    // usePost-hook 
+    const { postData, loading, error } = usePost("https://dt210gmoment2-backend.onrender.com/todo");
+
     // Valideringsschema
     const validationSchema = Yup.object({
         title: Yup.string().required("Du måste ange en titel").min(3, "Titel måste vara minst 3 tecken lång"),
-        description: Yup.string().required("Beskrivning får vara max 200 tecken").max(200),
+        description: Yup.string().required("Lägg till en beskrivning").max(200, "Beskrivning får vara max 200 tecken"),
         status: Yup.string().oneOf(["Ej påbörjad", "Pågående", "Avklarad"])
     })
 
-    // States för errors 
+    // States för felmeddelanden 
     const [errors, setErrors] = useState<ErrorsData>({})
 
     // Förhindra att sida laddas om 
@@ -37,6 +41,12 @@ const TodoForm = () => {
 
             console.log("todo tillagd", formData);
             setErrors({}); // Tomt objekt om ok 
+
+            await postData(formData); // Skicka till api 
+
+            setFormData({ title: "", description: "", status: "Ej påbörjad" }); // Rensa formulär 
+
+            onTodoAdded(); // Uppdatera listan 
 
             // Fånga upp fel 
         } catch (errors) {
@@ -58,7 +68,7 @@ const TodoForm = () => {
 
         }
 
-    }
+    };
 
 
     return (
@@ -85,7 +95,10 @@ const TodoForm = () => {
                 }
             </select>
             {errors.status && <span className="error">{errors.status}</span>}
-            <input type="submit" value="Lägg till" />
+            <button type="submit" disabled={loading}>
+                {loading ? "Lägger till" : "Lägg till"}
+            </button>
+            {error && <p className="error">{error}</p>}
         </form>
     )
 }

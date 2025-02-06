@@ -1,4 +1,4 @@
- //Interface for todo 
+//Interface for todo 
 export interface todoInterface {
   _id?: string,
   title: string,
