@@ -1,6 +1,7 @@
 // Importera css-fil
 import { useState } from "react";
 import { todoInterface } from "../interfaces/TodoInterface"; // Importera todoInterface
+import * as Yup from "yup"; // Importera Yup
 
 
 const TodoForm = () => {
@@ -8,50 +9,56 @@ const TodoForm = () => {
     // Interface för felmeddelanden 
     interface ErrorsData {
         title?: string,
-        description?: string
+        description?: string,
+        status?: string
     }
 
     // States för formuläret 
     const [formData, setFormData] = useState<todoInterface>({ title: "", description: "", status: "Ej påbörjad" })
     const statusArr = ["Ej påbörjad", "Pågående", "Avklarad"];
 
+    // Valideringsschema
+    const validationSchema = Yup.object({
+        title: Yup.string().required("Du måste ange en titel").min(3, "Titel måste vara minst 3 tecken lång"),
+        description: Yup.string().required("Beskrivning får vara max 200 tecken").max(200),
+        status: Yup.string().oneOf(["Ej påbörjad", "Pågående", "Avklarad"])
+    })
+
     // States för errors 
     const [errors, setErrors] = useState<ErrorsData>({})
 
-    // Funktion för att validera data 
-    const validateForm = ((data: todoInterface) => {
-
-        const validationErrors: ErrorsData = {}; // Objekt för ev fel 
-
-        if (!data.title) {
-            validationErrors.title = "Ange en titel";
-        }
-
-        if (!data.description) {
-            validationErrors.description = "Ange en beskrivning";
-        }
-
-        return validationErrors;
-    })
-
     // Förhindra att sida laddas om 
-    const submitForm = ((e: any) => {
+    const submitForm = async (e: any) => {
         e.preventDefault();
 
-        // Validera fält innan formulär skickas 
-        const validationErrors = validateForm(formData);
+        // Använd valideringsschema 
+        try {
+            await validationSchema.validate(formData, { abortEarly: false });
 
-        // Kontrollera props i objekt 
-        if (Object.keys(validationErrors).length > 0) {
-            setErrors(validationErrors);
-            
-        } else {
-            setErrors({});
-            // Skicka data om korrekt 
+            console.log("todo tillagd", formData);
+            setErrors({}); // Tomt objekt om ok 
+
+            // Fånga upp fel 
+        } catch (errors) {
+            const validationErrors: ErrorsData = {}; // Objekt för ev fel
+
+            // Om det finns några fel 
+            if (errors instanceof Yup.ValidationError) {
+                // Loopa igenom fel 
+                errors.inner.forEach(error => {
+                    const prop = error.path as keyof ErrorsData;
+
+                    // Lägg till värde på prop till validationErrors och ta ut felmeddelande 
+                    validationErrors[prop] = error.message;
+                })
+
+                setErrors(validationErrors);
+
+            }
 
         }
 
-    })
+    }
 
 
     return (
@@ -77,6 +84,7 @@ const TodoForm = () => {
                     ))
                 }
             </select>
+            {errors.status && <span className="error">{errors.status}</span>}
             <input type="submit" value="Lägg till" />
         </form>
     )
