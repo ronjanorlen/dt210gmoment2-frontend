@@ -1,15 +1,10 @@
 import './App.css'
-import { useState, useEffect } from "react"; // Importera useState och useEffect
+// import { useState, useEffect } from "react"; // Importera useState och useEffect
 import Todo from './components/Todo'; // Importera Todo-komponent
 import useGet from './hooks/useGet'; // Importera get-hook 
+import { todoInterface } from './interfaces/TodoInterface'; // Importera todointerface
+import TodoForm from './components/TodoForm'; // Importera TodoForm-komponent 
 
-//Interface for todo 
-interface todoInterface {
-  _id?: string,
-  title: string,
-  description: string,
-  status: string
-}
 
 function App() {
 
@@ -20,6 +15,8 @@ function App() {
     <>
     <main>
       <h1>Att göra:</h1>
+
+      <TodoForm />
 
      {loading && <p>Hämtar todos..</p>}
 

@@ -1,5 +1,7 @@
 // Child-komponent
-const Todo = ({todo, onTodoUpdate} : {todo: any, onTodoUpdate: Function}) => {
+import { todoInterface } from "../interfaces/TodoInterface"; // Importera interface
+
+const Todo = ({todo, onTodoUpdate} : {todo: todoInterface, onTodoUpdate: Function}) => {
     // Skriv ut i färg baserat på status
     const statusColor = todo.status === "Ej påbörjad" ? "red" : todo.status === "Pågående" ? "orange" : "green"
 
