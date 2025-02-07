@@ -85,7 +85,7 @@ const TodoForm = ({ onTodoAdded }: { onTodoAdded: () => void }) => {
 
             {errors.description && <span className="error">{errors.description}</span>}
 
-            <label htmlFor="status">Status</label>
+            <label htmlFor="status">Status:</label>
             <select name="status" id="status" value={formData.status}
                 onChange={(e) => setFormData({ ...formData, status: e.target.value })}>
                 {
@@ -96,7 +96,9 @@ const TodoForm = ({ onTodoAdded }: { onTodoAdded: () => void }) => {
             </select>
             {errors.status && <span className="error">{errors.status}</span>}
             <button type="submit" className="add-btn" disabled={loading}>
-                {loading ? "Lägger till" : "Lägg till"}
+                {loading ? "Lägger till..." : <>
+                    <i className="fa-solid fa-plus"></i> Lägg till
+                </>}
             </button>
             {error && <p className="error">{error}</p>}
         </form>

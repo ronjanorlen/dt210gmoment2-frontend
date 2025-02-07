@@ -77,7 +77,7 @@ const Todo = ({ todo, onTodoUpdate, deleteMessage }: { todo: todoInterface, onTo
                     <option>Avklarad</option>
                 </select>
             </form>
-            <button className="delete-btn" onClick={deleteTodo}>Ta bort</button>
+            <button className="delete-btn" onClick={deleteTodo}><i className="fa-solid fa-trash"></i> Ta bort</button>
 
         </>
     )

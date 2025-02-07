@@ -25,7 +25,7 @@ function App() {
       <main>
         <h1>Att göra lista</h1>
 
-        <h2>Lägg till ny uppgift</h2>
+        <h2>Lägg till ny uppgift <i className="fa-solid fa-pencil"></i></h2>
         <TodoForm onTodoAdded={fetchData} />
 
         {message && <p className="delete-msg">{message}</p>} {/*Visa meddelande vid borttagning*/}
