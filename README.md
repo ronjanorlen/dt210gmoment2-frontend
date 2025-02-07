@@ -13,7 +13,7 @@ Detta repository innehåller källkoden för en React-applikation som är byggd 
 * Responsiv design för både små och stora skärmar
 
 ## Backend
-Projektet är byggt med Hapi.js som ansluter till en MongoDB-databas och använder Mongoose-schema för lagring av data. API:et har full CRUD-funktionalitet med stöd för att:
+Projektets backend-sida är byggt med Hapi.js som ansluter till en MongoDB-databas och använder Mongoose-schema för lagring av data. API:et har full CRUD-funktionalitet med stöd för att:
 * Hämta alla uppgifter
 * Lägga till en ny uppgift
 * Uppdatera en uppgift
