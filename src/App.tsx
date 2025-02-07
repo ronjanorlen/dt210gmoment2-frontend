@@ -9,7 +9,8 @@ import { useState } from "react"; // Importera useState
 function App() {
 
   // States för komponent 
-  const { data: todos, error, loading, fetchData } = useGet<todoInterface[]>("https://dt210gmoment2-backend.onrender.com/todos");
+  const { data: todos = [], error, loading, fetchData } = useGet<todoInterface[]>("https://dt210gmoment2-backend.onrender.com/todos");
+
 
   // Meddelande vid borttagning av todo 
   const [message, setMessage] = useState<string | null>(null);
@@ -33,14 +34,17 @@ function App() {
 
         {error && <p className="error-msg">{error}</p>} {/*Om fel vid inhämtning*/}
 
-        <div className="todo-container">
-          {
+      {/* Kontrollera om todos är tomt */}
+      <div className="todo-container">
+      {todos.length === 0 ? (
+            <p>Det finns inga todos att hämta</p> // Om inga todos finns, visa detta meddelande
+          ) : (
             todos.map((todo) => (
               <div className="todo" key={todo._id}>
                 <Todo todo={todo} onTodoUpdate={fetchData} deleteMessage={deleteMessage} />
               </div>
             ))
-          }
+          )}
         </div>
 
       </main>

@@ -8,9 +8,9 @@ export default function useGet<T>(url: string): {
   fetchData: () => void
 } {
   // States för komponent 
-  const [data, setData] = useState<T>([] as T) // Kan vara array av interface, eller bara objekt av interface 
+  const [data, setData] = useState<T>([] as T); // Kan vara array av interface, eller bara objekt av interface 
   const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null)
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchData();
