@@ -30,11 +30,10 @@ function App() {
 
         {message && <p className="delete-msg">{message}</p>} {/*Visa meddelande vid borttagning*/}
 
-        {loading && <p className="get-todos">Hämtar todos..</p>} {/*I väntan på api*/}
-
         {error && <p className="error-msg">{error}</p>} {/*Om fel vid inhämtning*/}
 
         <h2>Min uppgifter:</h2>
+        {loading && <p className="get-todos">Hämtar todos..</p>} {/*I väntan på api*/}
         {/* Kontrollera om todos är tomt */}
         <div className="todo-container">
           {(!todos || (Array.isArray(todos) && todos.length === 0)) && !loading && !error ? (
