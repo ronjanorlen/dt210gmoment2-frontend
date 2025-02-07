@@ -1,13 +1,18 @@
 /* Separat todo */
 .todo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: #f8f8f8;
     border: 1px solid #a7a7a7;
     border-radius: 8px;
-    padding: 8px;
+    padding: 2px 8px;
     width: 250px;
+    height: auto;
     text-align: center;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
+
 
 /* ta bort-knapp */
 .delete-btn {
@@ -15,7 +20,7 @@
     color: #fff;
     border: none;
     padding: 10px 20px;
-    margin-bottom: 1em;
+    margin: 1em auto;
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
@@ -34,7 +39,7 @@
 
 /* Formulär för status-ändring */
 .statusForm {
-    margin: 1em;
+    margin-top: auto;
 }
 
 /* label */

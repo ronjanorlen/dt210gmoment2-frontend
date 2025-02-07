@@ -1,4 +1,3 @@
-// Child-komponent
 import "./Todo.css"; // Importera css-fil 
 import { todoInterface } from "../interfaces/TodoInterface"; // Importera interface 
 

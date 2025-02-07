@@ -2,13 +2,13 @@ import { useState, useEffect } from "react"; // Importera useState och useEffect
 
 // Hook för get-anrop 
 export default function useGet<T>(url: string): {
-  data: T, // Representera todointerface 
+  data: T | null, // Representera todointerface eller null 
   error: string | null,
   loading: boolean,
   fetchData: () => void
 } {
   // States för komponent 
-  const [data, setData] = useState<T>([] as T); // Kan vara array av interface, eller bara objekt av interface 
+  const [data, setData] = useState<T | null>(null); // Kan vara array av interface eller null 
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -29,7 +29,7 @@ export default function useGet<T>(url: string): {
 
       // Bearbeta svar 
       const data = await res.json();
-      setData(data);
+      setData(data.length > 0 ? data : null);
 
       // Fånga upp fel
     } catch (error) {

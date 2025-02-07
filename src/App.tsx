@@ -34,12 +34,13 @@ function App() {
 
         {error && <p className="error-msg">{error}</p>} {/*Om fel vid inhämtning*/}
 
-      {/* Kontrollera om todos är tomt */}
-      <div className="todo-container">
-      {todos.length === 0 ? (
-            <p>Det finns inga todos att hämta</p> // Om inga todos finns, visa detta meddelande
+        <h2>Min uppgifter:</h2>
+        {/* Kontrollera om todos är tomt */}
+        <div className="todo-container">
+          {(!todos || (Array.isArray(todos) && todos.length === 0)) && !loading && !error ? (
+            <p className="empty-msg">Inga uppgifter har lagts till ännu</p> // Om inga todos finns, visa detta meddelande
           ) : (
-            todos.map((todo) => (
+            Array.isArray(todos) && todos.map((todo) => (
               <div className="todo" key={todo._id}>
                 <Todo todo={todo} onTodoUpdate={fetchData} deleteMessage={deleteMessage} />
               </div>

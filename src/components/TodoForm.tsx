@@ -39,7 +39,6 @@ const TodoForm = ({ onTodoAdded }: { onTodoAdded: () => void }) => {
         try {
             await validationSchema.validate(formData, { abortEarly: false });
 
-            console.log("todo tillagd", formData);
             setErrors({}); // Tomt objekt om ok 
 
             await postData(formData); // Skicka till api 
