@@ -19,7 +19,9 @@ label {
 }
 
 /* Inputfält och textarea */
-input, textarea, select {
+input,
+textarea,
+select {
     width: 100%;
     padding: 10px;
     border: 1px solid;
@@ -28,7 +30,9 @@ input, textarea, select {
     transition: border-color 0.3s ease;
 }
 
-input:focus, textarea:focus, select:focus {
+input:focus,
+textarea:focus,
+select:focus {
     border-color: #1ab040;
     outline: none;
 }

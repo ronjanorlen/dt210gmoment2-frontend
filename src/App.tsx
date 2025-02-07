@@ -10,9 +10,9 @@ function App() {
 
   // States för komponent 
   const { data: todos, error, loading, fetchData } = useGet<todoInterface[]>("https://dt210gmoment2-backend.onrender.com/todos");
-  
+
   // Meddelande vid borttagning av todo 
-  const [message, setMessage] = useState<string | null>(null); 
+  const [message, setMessage] = useState<string | null>(null);
 
   const deleteMessage = (msg: string) => {
     setMessage(msg);
@@ -29,7 +29,7 @@ function App() {
 
         {message && <p className="delete-msg">{message}</p>} {/*Visa meddelande vid borttagning*/}
 
-        {loading && <p>Hämtar todos..</p>} {/*I väntan på api*/}
+        {loading && <p className="get-todos">Hämtar todos..</p>} {/*I väntan på api*/}
 
         {error && <p className="error-msg">{error}</p>} {/*Om fel vid inhämtning*/}
 

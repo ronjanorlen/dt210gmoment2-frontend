@@ -70,7 +70,7 @@ const TodoForm = ({ onTodoAdded }: { onTodoAdded: () => void }) => {
 
     };
 
-
+    // Formulär för att lägga till todo 
     return (
         <form className="addTodoForm" onSubmit={submitForm}>
             <label htmlFor="title">Titel:</label>
@@ -81,7 +81,8 @@ const TodoForm = ({ onTodoAdded }: { onTodoAdded: () => void }) => {
 
             <label htmlFor="description">Beskrivning:</label>
             <textarea name="description" id="description" value={formData.description}
-                onChange={(e) => setFormData({ ...formData, description: e.target.value })}></textarea>
+                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                maxLength={200}></textarea>
 
             {errors.description && <span className="error">{errors.description}</span>}
 

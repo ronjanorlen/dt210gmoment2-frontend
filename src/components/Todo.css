@@ -28,7 +28,7 @@
 }
 
 .delete-btn:active {
-    background-color: #990000; 
+    background-color: #990000;
     transform: scale(0.95);
 }
 
@@ -65,8 +65,9 @@
     .todo {
         width: 90%;
     }
+
     .delete-btn {
-       width: 80%;
+        width: 80%;
     }
-    
+
 }

@@ -1,3 +1,9 @@
+/* Vid laddning av todos */
+.get-todos {
+    text-align: center;
+    font-size: 3em;
+}
+
 /* Container med todos */
 .todo-container {
     display: flex;
@@ -16,7 +22,7 @@
     text-align: center;
     font-weight: bold;
     margin-bottom: 10px;
-    animation: fadeOut 3s forwards;
+    animation: fadeOut 5s forwards;
 }
 
 /* Felmeddelande */
@@ -32,7 +38,11 @@
 
 /* Animation som gömmer delete-meddelande */
 @keyframes fadeOut {
-    0% { opacity: 1; }
-    100% { opacity: 0; }
-}
+    0% {
+        opacity: 1;
+    }
 
+    100% {
+        opacity: 0;
+    }
+}

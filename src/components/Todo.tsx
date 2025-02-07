@@ -51,7 +51,7 @@ const Todo = ({ todo, onTodoUpdate, deleteMessage }: { todo: todoInterface, onTo
             if (!res.ok) {
 
                 throw new Error("Kunde ej ta bort todo");
-            }   
+            }
 
             // Om ok
             deleteMessage("Todon togs bort!"); // Visa meddelande 
