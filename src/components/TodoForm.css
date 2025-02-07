@@ -1,0 +1,68 @@
+/* Formulär */
+.addTodoForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* labels */
+label {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Inputfält och textarea */
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #1ab040;
+    outline: none;
+}
+
+/* Styling textarea */
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Felmeddelanden */
+.error {
+    color: #ff4d4d;
+    font-size: 14px;
+}
+
+/* Lägg till-knapp */
+.add-btn {
+    background: #098f10;
+    color: #fff;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.add-btn:hover {
+    background: #045e07;
+    transform: scale(1.05);
+}
+
+.add-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}

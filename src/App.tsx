@@ -22,7 +22,7 @@ function App() {
   return (
     <>
       <main>
-        <h1>Att göra:</h1>
+        <h1>Att göra lista</h1>
 
         <h2>Lägg till ny uppgift</h2>
         <TodoForm onTodoAdded={fetchData} />

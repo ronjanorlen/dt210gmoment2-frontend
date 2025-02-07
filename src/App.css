@@ -1,0 +1,38 @@
+/* Container med todos */
+.todo-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 2em 0;
+}
+
+/* Meddelande vid borttagning */
+.delete-msg {
+    background-color: #28a1a7;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    animation: fadeOut 3s forwards;
+}
+
+/* Felmeddelande */
+.error-msg {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Animation som gömmer delete-meddelande */
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+

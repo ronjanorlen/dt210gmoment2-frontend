@@ -1,4 +1,4 @@
-// Importera css-fil
+import "./TodoForm.css"; // Importera css-fil
 import { useState } from "react";
 import { todoInterface } from "../interfaces/TodoInterface"; // Importera todoInterface
 import * as Yup from "yup"; // Importera Yup
@@ -72,7 +72,7 @@ const TodoForm = ({ onTodoAdded }: { onTodoAdded: () => void }) => {
 
 
     return (
-        <form onSubmit={submitForm}>
+        <form className="addTodoForm" onSubmit={submitForm}>
             <label htmlFor="title">Titel:</label>
             <input type="text" name="title" id="title" value={formData.title}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })} />
@@ -95,7 +95,7 @@ const TodoForm = ({ onTodoAdded }: { onTodoAdded: () => void }) => {
                 }
             </select>
             {errors.status && <span className="error">{errors.status}</span>}
-            <button type="submit" disabled={loading}>
+            <button type="submit" className="add-btn" disabled={loading}>
                 {loading ? "Lägger till" : "Lägg till"}
             </button>
             {error && <p className="error">{error}</p>}

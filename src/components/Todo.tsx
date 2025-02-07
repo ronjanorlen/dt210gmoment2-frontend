@@ -68,7 +68,7 @@ const Todo = ({ todo, onTodoUpdate, deleteMessage }: { todo: todoInterface, onTo
             <p>{todo.description}</p>
             <p style={{ color: statusColor }}><strong>{todo.status}</strong></p>
 
-            <form>
+            <form className="statusForm">
                 <label htmlFor="status">Ändra status:</label>
                 <br />
                 <select name="status" id="status" defaultValue={todo.status}
